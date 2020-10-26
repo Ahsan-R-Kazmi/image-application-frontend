@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { ImageGallery } from './components/ImageGallery';
+import { DefaultToastContainer, ToastProvider } from 'react-toast-notifications'
+
+const ToastContainer = (props: any) => (
+    <DefaultToastContainer
+      className="toast-container"
+      style={{ zIndex: 2000 }}
+      {...props}
+    />
+  );
+  
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    return (
+        <ToastProvider
+            placement="top-center"
+            components={{ ToastContainer }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+            <div>
+                <div className="header">Image Application</div>
+                <ImageGallery />
+            </div>
+        </ToastProvider>
+    );
 }
 
 export default App;
